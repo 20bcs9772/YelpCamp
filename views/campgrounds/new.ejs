@@ -1,55 +1,174 @@
 <% layout('layouts/boilerplate') %>
 
-    <div class="container bg-light mt-4 py-3">
-        <h1 class="text-center">New CampGround</h1>
-        <div class="px-sm-5 mx-sm-5">
-            <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Campground Title" name="campground[title]" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" placeholder="City , State" name="campground[location]" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Camp Images</label>
-                    <input class="form-control" type="file" id="formFileMultiple" required name="image" multiple>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <!-- <input type="file" name="image" multiple> -->
-                <!-- <div class="mb-3">
+<div class="container bg-light mt-4 py-3">
+  <h1 class="text-center">New CampGround</h1>
+  <div class="px-sm-5 mx-sm-5">
+    <form
+      action="/campgrounds"
+      method="POST"
+      novalidate
+      class="validated-form"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Campground Title"
+          name="campground[title]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="season" class="form-label">Season</label>
+        <select
+          multiple
+          id="season"
+          name="campground[season]"
+          class="form-control"
+        >
+          <option value="Fall">Fall</option>
+          <option value="Summer">Summer</option>
+          <option value="Spring">Spring</option>
+          <option value="Winter">Winter</option>
+        </select>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          placeholder="City , State"
+          name="campground[location]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Camp Images</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFileMultiple"
+          required
+          name="image"
+          multiple
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <!-- <input type="file" name="image" multiple> -->
+      <!-- <div class="mb-3">
                     <label for="image" class="form-label">Image Url</label>
                     <input type="text" class="form-control" id="image" name="campground[image]" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div> -->
-                <div class="mb-3">
-                    <label for="price" class="form-label">Camp Price</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">$</span>
-                        <input type="text" class="form-control" id="price" placeholder="0.00" required name="campground[price]" aria-label=" price " aria-describedby="basic-addon1 ">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 ">
-                    <label for="description " class="form-label ">Description</label>
-                    <textarea type="text " class="form-control " id="description " required name="campground[description]"></textarea>
-                </div>
-                <div class="mb-3 ">
-                    <button class="btn btn-success ">Add Campground</button>
-                </div>
-            </form>
+      <div class="mb-3">
+        <label for="price" class="form-label">Camp Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="0.00"
+            required
+            name="campground[price]"
+            aria-label=" price "
+            aria-describedby="basic-addon1 "
+          />
+          <div class="valid-feedback">Looks good!</div>
         </div>
-    </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description " class="form-label">Description</label>
+        <textarea
+          type="text "
+          class="form-control"
+          id="description "
+          required
+          name="campground[description]"
+        ></textarea>
+      </div>
+      <!-- <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="search-input"
+          placeholder="Search..."
+          name="campground[facilities]"
+        />
+        <div id="tags" class="mt-2">
+          <h5 id="tags-container"></h5>
+        </div>
+      </div> -->
+      <div class="mb-3">
+        <button class="btn btn-success">Add Campground</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <script>
+  var options = ['Option 1', 'Option 2', 'Option 3'];
+  var selectedTags = [];
+
+  $('#search-input').autocomplete({
+    source: options,
+    select: function(event, ui) {
+      addTag(ui.item.value);
+      $('#search-input').val('');
+      return false;
+    },
+    focus: function(event, ui) {
+      // Prevent the input value from being replaced with the focused item
+      event.preventDefault();
+    }
+  });
+
+  // Add a tag when the user presses the Enter key
+  $('#search-input').keydown(function(event) {
+    if (event.key === 'Enter') {
+      addTag($(this).val());
+      $(this).val('');
+      event.preventDefault();
+    }
+  });
+
+  function addTag(option) {
+    // Check if the tag already exists
+    if (!selectedTags.includes(option)) {
+      // Add the tag to the selected tags array
+      selectedTags.push(option);
+      // Create the tag element
+      var tag = document.createElement('span');
+      tag.className = 'badge bg-primary mr-2';
+      tag.innerHTML = option + ' <span onclick="removeTag(\'' + option + '\')" class="">x</span>';
+      // Append the tag to the tags container
+      document.getElementById('tags-container').appendChild(tag);
+    }
+  }
+
+  function removeTag(option) {
+    // Remove the tag from the selected tags array
+    var index = selectedTags.indexOf(option);
+    if (index > -1) {
+      selectedTags.splice(index, 1);
+    }
+    // Remove the tag element
+    var tagsContainer = document.getElementById('tags-container');
+    var tags = tagsContainer.getElementsByClassName('bg-primary');
+    for (var i = 0; i < tags.length; i++) {
+      if (tags[i].innerText.includes(option)) {
+        tagsContainer.removeChild(tags[i]);
+      }
+    }
+  }
+</script> -->
