@@ -11,11 +11,6 @@ const options = {
 
 const mailer = nodemailer.createTransport(sgTransport(options));
 
-const capitalize = (s) => {
-    if (typeof s !== 'string') return s
-    return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
 module.exports.renderRegister = (req, res) => {
     res.render('users/register');
 }
@@ -62,14 +57,6 @@ module.exports.findProfile = async(req, res) => {
     const campgrounds = userCamp.filter(({ author }) => author.username === username);
     const check = 1;
     res.render('campgrounds/index', { campgrounds, check })
-}
-
-module.exports.searchCampgrounds = async(req, res) => {
-    const v = await Campground.find({}).populate('author');
-    const search = capitalize(req.query.q.trim());
-    const campgrounds = await v.filter((obj) => (Object.values((Object.values(obj))[5])).find(el => el == search));
-    const check = 2;
-    res.render('campgrounds/index', { campgrounds, check, search })
 }
 
 module.exports.logout = (req, res) => {
