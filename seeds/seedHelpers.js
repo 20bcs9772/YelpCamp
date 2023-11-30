@@ -231,6 +231,24 @@ module.exports.countries = [
   },
 ];
 
+module.exports.descriptions = [
+  "A serene campground nestled in the heart of the forest, surrounded by towering pine trees and a babbling brook.",
+  "Experience the thrill of camping on the edge of a crystal-clear lake, with breathtaking views of the sunrise and sunset.",
+  "Escape to a peaceful oasis, where the only sounds you hear are the rustling leaves and the songs of chirping birds.",
+  "Discover a family-friendly campground with spacious sites, perfect for group gatherings and outdoor activities.",
+  "Unplug and unwind in a secluded campground, far away from the hustle and bustle of city life.",
+  "Camp under the starry night sky in a designated dark-sky area, where the Milky Way shines brilliantly overhead.",
+  "Pitch your tent in a meadow surrounded by wildflowers, creating a picturesque setting for a memorable camping experience.",
+  "Explore a campground with easy access to hiking trails, providing endless opportunities for outdoor adventure.",
+  "Camp along a tranquil riverbank, where you can enjoy fishing, canoeing, and the soothing sounds of flowing water.",
+  "Immerse yourself in nature at a campground surrounded by towering mountains, offering breathtaking panoramic views.",
+  "Experience the joy of a beachfront campground, with the soothing sounds of waves and the smell of salt in the air.",
+  "Camp in a historic location, where you can explore the remnants of old settlements and learn about the area's rich heritage.",
+  "Escape to a winter wonderland campground, where you can enjoy snow-covered landscapes and cozy campfires.",
+  "Discover a pet-friendly campground, perfect for furry companions to join in on the outdoor fun.",
+  "Set up camp in a campground with stargazing events, where astronomers guide you through the wonders of the night sky."
+];
+
 module.exports.sample = (array) =>
   array[Math.floor(Math.random() * array.length)];
 
