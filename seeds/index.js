@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const fetch = require("node-fetch");
-const { places, descriptors, morePics, pics, users } = require("./seedHelpers");
+const {
+  places,
+  descriptors,
+  morePics,
+  pics,
+  users,
+  countries,
+  sample,
+  descriptions,
+} = require("./seedHelpers");
 const Campground = require("../models/campground");
 const dbUrl = "mongodb://127.0.0.1:27017/yelpcamp";
 // const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
@@ -182,7 +191,6 @@ const seedDB = async () => {
 //       console.log("error => ", error);
 //     });
   for (let i = 0; i < 57; i++) {
-    let random5 = Math.floor(Math.random() * 11);
     let country;
     let state;
     while (true) {
@@ -212,7 +220,7 @@ const seedDB = async () => {
       },
       title: `${sample(descriptors)} ${sample(places)}`,
       // image: `https://source.unsplash.com/collection/${sample(morePics)}`,
-      description: words(),
+      description: sample(descriptions),
       price,
       views: 0,
       date: {

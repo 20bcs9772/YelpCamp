@@ -82,7 +82,186 @@ module.exports.morePics = [
 ]
 
 module.exports.users = [
-    "653d49b0a37360588cec82dd",
-    "653d4c373d68601420920192",
-    "653d4ca1fe2c5228c8adcdd4"
-]
+  "653d49b0a37360588cec82dd",
+  "653d4c373d68601420920192",
+  "653d4ca1fe2c5228c8adcdd4",
+];
+
+module.exports.countries = [
+  {
+    name: "USA",
+    states: [
+      {
+        name: "California",
+        cities: [
+          { name: "Los Angeles", longitude: -118.248779, latitude: 34.052235 },
+          {
+            name: "San Francisco",
+            longitude: -122.419418,
+            latitude: 37.774929,
+          },
+        ],
+      },
+      {
+        name: "New York",
+        cities: [
+          { name: "New York City", longitude: -74.006058, latitude: 40.712776 },
+          { name: "Buffalo", longitude: -78.878372, latitude: 42.886444 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Canada",
+    states: [
+      {
+        name: "Ontario",
+        cities: [
+          { name: "Toronto", longitude: -79.383186, latitude: 43.653225 },
+          { name: "Ottawa", longitude: -75.697197, latitude: 45.421528 },
+        ],
+      },
+      {
+        name: "British Columbia",
+        cities: [
+          { name: "Vancouver", longitude: -123.121643, latitude: 49.28273 },
+          { name: "Victoria", longitude: -123.365644, latitude: 48.428421 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Brazil",
+    states: [
+      {
+        name: "São Paulo",
+        cities: [
+          { name: "São Paulo", longitude: -46.633309, latitude: -23.55052 },
+          {
+            name: "Rio de Janeiro",
+            longitude: -43.172896,
+            latitude: -22.906847,
+          },
+        ],
+      },
+      {
+        name: "Bahia",
+        cities: [
+          { name: "Salvador", longitude: -38.501381, latitude: -12.973291 },
+          {
+            name: "Feira de Santana",
+            longitude: -38.955654,
+            latitude: -12.266951,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Germany",
+    states: [
+      {
+        name: "Berlin",
+        cities: [{ name: "Berlin", longitude: 13.404954, latitude: 52.520007 }],
+      },
+      {
+        name: "Bavaria",
+        cities: [
+          { name: "Munich", longitude: 11.576124, latitude: 48.137154 },
+          { name: "Nuremberg", longitude: 11.074822, latitude: 49.452102 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Japan",
+    states: [
+      {
+        name: "Tokyo",
+        cities: [
+          { name: "Tokyo", longitude: 139.691711, latitude: 35.689487 },
+          { name: "Yokohama", longitude: 139.642502, latitude: 35.443708 },
+        ],
+      },
+      {
+        name: "Osaka",
+        cities: [
+          { name: "Osaka", longitude: 135.502197, latitude: 34.693737 },
+          { name: "Kobe", longitude: 135.196652, latitude: 34.690083 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Australia",
+    states: [
+      {
+        name: "New South Wales",
+        cities: [
+          { name: "Sydney", longitude: 151.20929, latitude: -33.86882 },
+          { name: "Newcastle", longitude: 151.785046, latitude: -32.928272 },
+        ],
+      },
+      {
+        name: "Victoria",
+        cities: [
+          { name: "Melbourne", longitude: 144.963158, latitude: -37.813629 },
+          { name: "Geelong", longitude: 144.35096, latitude: -38.147286 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "South Africa",
+    states: [
+      {
+        name: "Gauteng",
+        cities: [
+          { name: "Johannesburg", longitude: 28.024345, latitude: -26.204103 },
+          { name: "Pretoria", longitude: 28.229271, latitude: -25.747868 },
+        ],
+      },
+      {
+        name: "Western Cape",
+        cities: [
+          { name: "Cape Town", longitude: 18.424055, latitude: -33.924869 },
+          { name: "Stellenbosch", longitude: 18.873969, latitude: -33.932104 },
+        ],
+      },
+    ],
+  },
+];
+
+module.exports.descriptions = [
+  "A serene campground nestled in the heart of the forest, surrounded by towering pine trees and a babbling brook.",
+  "Experience the thrill of camping on the edge of a crystal-clear lake, with breathtaking views of the sunrise and sunset.",
+  "Escape to a peaceful oasis, where the only sounds you hear are the rustling leaves and the songs of chirping birds.",
+  "Discover a family-friendly campground with spacious sites, perfect for group gatherings and outdoor activities.",
+  "Unplug and unwind in a secluded campground, far away from the hustle and bustle of city life.",
+  "Camp under the starry night sky in a designated dark-sky area, where the Milky Way shines brilliantly overhead.",
+  "Pitch your tent in a meadow surrounded by wildflowers, creating a picturesque setting for a memorable camping experience.",
+  "Explore a campground with easy access to hiking trails, providing endless opportunities for outdoor adventure.",
+  "Camp along a tranquil riverbank, where you can enjoy fishing, canoeing, and the soothing sounds of flowing water.",
+  "Immerse yourself in nature at a campground surrounded by towering mountains, offering breathtaking panoramic views.",
+  "Experience the joy of a beachfront campground, with the soothing sounds of waves and the smell of salt in the air.",
+  "Camp in a historic location, where you can explore the remnants of old settlements and learn about the area's rich heritage.",
+  "Escape to a winter wonderland campground, where you can enjoy snow-covered landscapes and cozy campfires.",
+  "Discover a pet-friendly campground, perfect for furry companions to join in on the outdoor fun.",
+  "Set up camp in a campground with stargazing events, where astronomers guide you through the wonders of the night sky."
+];
+
+module.exports.sample = (array) =>
+  array[Math.floor(Math.random() * array.length)];
+
+module.exports.words = () => {
+    let para = " ";
+    for (let k = 0; k < 120; k++) {
+      para =
+        (Math.random() + 1)
+          .toString(36)
+          .substring(Math.floor(Math.random() * 4) + 7) +
+        " " +
+        para;
+    }
+    return para;
+  };
