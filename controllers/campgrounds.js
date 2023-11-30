@@ -2,17 +2,33 @@ const Campground = require("../models/campground");
 const User = require("../models/user");
 const { cloudinary } = require("../cloudinary");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const campground = require("../models/campground");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const nodemailer = require("nodemailer");
 const sgTransport = require("nodemailer-sendgrid-transport");
+const Fuse = require('fuse.js');
+const fuseOptions = {
+    keys:[
+        "title",
+        "price",
+        "location",
+        "country",
+        "state",
+        "city",
+        "author.username"
+    ]
+};
 
 const options = {
   auth: {
     api_key: process.env.API_KEY,
   },
 };
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return s
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
 const mailer = nodemailer.createTransport(sgTransport(options));
 
@@ -161,6 +177,20 @@ module.exports.updateCampground = async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
   }
 };
+
+module.exports.searchCampgrounds = async(req, res) => {
+  const query = req?.body?.query;
+  if(query.length){
+  const v = await Campground.find({}).populate('author');
+  const fuse = new Fuse(v, fuseOptions);
+  const search = capitalize(query.trim());
+  const campgrounds = fuse.search(query).reverse().map(s => s.item)
+  const check = 2;
+  res.render('campgrounds/index', { campgrounds, check, search })
+  } else {
+    res.redirect("/campgrounds"); 
+  }
+}
 
 module.exports.deleteCampground = async (req, res) => {
   const { id } = req.params;
