@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Create the select dropdown -->
+<div class="input-group mb-3">
+  <select class="form-control" id="season-select" multiple>
+    <option value="Winter">Winter</option>
+    <option value="Spring">Spring</option>
+    <option value="Summer">Summer</option>
+    <option value="Fall">Fall</option>
+  </select>
+</div>
+
+<!-- Display selected tags -->
+<div id="tags-container" class="mt-2"></div>
+
+<script>
+  var selectedTags = [];
+
+  $('#season-select').change(function() {
+    // Get selected values
+    var selectedValues = $(this).val();
+    // Update the selected tags array
+    selectedTags = selectedValues;
+    // Clear the tags container
+    $('#tags-container').empty();
+    // Add tags for the selected values
+    $.each(selectedTags, function(index, value) {
+      addTag(value);
+    });
+  });
+
+  function addTag(option) {
+    // Create the tag element
+    var tag = document.createElement('span');
+    tag.className = 'badge badge-primary mr-2';
+    tag.innerHTML = option + ' <span onclick="removeTag(\'' + option + '\')" class="badge badge-light">x</span>';
+    // Append the tag to the tags container
+    document.getElementById('tags-container').appendChild(tag);
+  }
+
+  function removeTag(option) {
+    // Remove the tag from the selected tags array
+    var index = selectedTags.indexOf(option);
+    if (index > -1) {
+      selectedTags.splice(index, 1);
+    }
+    // Update the select dropdown
+    $('#season-select').val(selectedTags).trigger('change');
+    // Remove the tag element
+    var tagsContainer = document.getElementById('tags-container');
+    var tags = tagsContainer.getElementsByClassName('badge-primary');
+    for (var i = 0; i < tags.length; i++) {
+      if (tags[i].innerText.includes(option)) {
+        tagsContainer.removeChild(tags[i]);
+      }
+    }
+  }
+</script>
+
+<!-- Include Bootstrap JS and Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</body>
+</html>
