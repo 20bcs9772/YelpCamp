@@ -3,7 +3,7 @@
 It is a Node.js web project from Udemy Course - The Web Developer Bootcamp 2022 by Colt Steele. In this application, users can view various campgrounds, make a yelpcamp account, add reviews, create and edit their campgrounds, search for a nearby camp and lots more.
 
 You can see the live demo of this project from the link below :
-https://desolate-journey-89417.herokuapp.com/
+https://yelpcamp-shw7.onrender.com/
 
 Screenshots :
 
